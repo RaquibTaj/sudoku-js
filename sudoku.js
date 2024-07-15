@@ -1,7 +1,9 @@
 var numSelected = null;
-var tileSelected = nul;
+var tileSelected = null;
 
 var errors = 0;
+
+//TODO: autogenerate board and answers in the future
 
 var board = [
     "--74916-5",
@@ -27,3 +29,17 @@ var solution = [
     "812945763"
 ]
 
+
+window.onload = function () {
+    setGame();
+}
+
+function setGame() {
+    for(let i = 1; i<=9; i++){
+        let number = document.createElement("div");
+        number.id = i;
+        number.innerText = i;
+        number.classList.add("number");
+        document.getElementById("digits").appendChild(number);
+    }
+}
