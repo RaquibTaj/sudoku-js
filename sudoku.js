@@ -48,6 +48,17 @@ function setGame() {
         for (let c=0; c<9; c++){
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
+            if(board[r][c] != "-"){
+                tile.classList.add("tile-start");
+                tile.innerText = board[r][c];
+            }
+            if (r == 2 || r == 5){
+                tile.classList.add("horizontal-line");
+            }
+            if (c == 2 || c == 5){
+                tile.classList.add("vertical-line");
+            }
+            tile.addEventListener("click", selectTile);
             tile.classList.add("tile");
             document.getElementById("board").append(tile);
         }
@@ -60,4 +71,13 @@ function selectNumber() {
     }
     numSelected = this;
     numSelected.classList.add("number-selected");
+}
+
+function selectTile() {
+    if (numSelected){
+        if(this.innerText != ""){
+            return;
+        }
+        this.innerText = numSelected.id;
+    }
 }
